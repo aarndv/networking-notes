@@ -52,7 +52,7 @@ enable secret midtermexam101
 
 ! Console Line Configuration
 line con 0
- password 0x8*724Kawjssx
+ password midtermexam101
  login
  exec-timeout 5 0
  logging synchronous
@@ -97,7 +97,7 @@ show ip ssh
 ! Step 2 & 3: Domain and Key Provisioning
 configure terminal
  ip domain-name Midterm.com
- crypto key generate rsa modulus 1024
+ crypto key generate rsa general-keys modulus 1024
  
 ! Note: To clear existing keys, use: crypto key zeroize rsa
 
@@ -147,7 +147,7 @@ show ip route
 
 ! Injecting a static path targeting the /23 network boundary
 ! Syntax: ip route [destination-network] [subnet-mask] [next-hop-ip]
-ip route 10.10.0.0 255.255.254.0 10.10.0.1
+ip route 10.0.16.0 255.255.254.0 10.10.0.1
 ```
 
 ### Local Host Resolution Table
