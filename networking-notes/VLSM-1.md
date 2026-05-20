@@ -178,16 +178,9 @@ When implementing Dynamic Host Configuration Protocol services via standard appl
 To configure standard web name resolution services inside simulated laboratory architectures, execute the workflow below:
 
 1. Locate the **HTTP** system configuration module and modify the `index.html` structure to meet institutional layout guidelines.
-2. Navigate to the **DNS** operational interface and enable functionality.
+2. Navigate to the **DNS** operational interface and enable functionality (turn it on).
 3. Map an **A Record** correlating the canonical resource domain format (e.g., `www.feutech.edu.ph`) directly to the web server's static IP address (e.g., `10.10.2.10`).
 4. Implement a Canonical Name (**CNAME**) mapping if alternative domain aliases must resolve to the primary host record. The authoritative **A Record** must be present in the server's database before configuring dependent CNAME entries.
-5. Trigger a dynamic client lease renewal via terminal execution to populate modified DNS entries across edge network endpoints.
-
-```bash
-! Target endpoint client commands for lease validation
-ipconfig /release
-ipconfig /renew
-```
 
 ## 6. WAN Edge and Service Provider Connectivity
 
@@ -195,7 +188,7 @@ To establish connectivity between the enterprise edge core network and the Inter
 
 ```nasl
 ! Verify directly connected neighbors via Cisco Discovery Protocol (CDP)
-show ip cdp neighbors
+show cdp neighbors
 
 ! Configure a default static route pointing to the ISP edge boundary
 configure terminal
