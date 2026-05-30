@@ -82,8 +82,10 @@ R1(config)# router rip
 R1(config-router)# version 2
 ! Disable auto-summarization at major network boundaries (essential for VLSM)
 R1(config-router)# no auto-summary
-! Advertise the interfaces belonging to 10.0.0.0 major network
-R1(config-router)# network 10.0.0.0
+! Advertise the interfaces belonging to 10.1.12.0 major network
+R1(config-router)# network 10.1.12.0
+! Advertise the interfaces belonging to 10.1.13.0 major network
+R1(config-router)# network 10.1.13.0
 ! Advertise the interfaces belonging to 192.168.1.0 major network
 R1(config-router)# network 192.168.1.0
 ! Stop sending unnecessary RIP updates out of the local LAN interface (Secures the LAN)
