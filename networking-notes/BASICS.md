@@ -22,5 +22,5 @@ Router#conf t
 
 ### To exit to privilege EXEC mode from global config mode
 ```nasl
-Router(config)#end
+Router(config)# end
 ```
