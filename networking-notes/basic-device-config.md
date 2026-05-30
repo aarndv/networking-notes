@@ -37,3 +37,16 @@ Router(config)#
 Router(config)# hostname PHRouter
 PHRouter(config)# 
 ```
+
+### To add a banner when opening the device
+```nasl
+PHRouter(config)# banner motd @
+#################################################################################################################################
+							CYBERSECURITY WARNING
+
+Unauthorized access, tampering, interception, or misuse of this device, system, or network is strictly prohibited. Violators may be subject to criminal prosecution and civil liabilities under applicable Philippine laws, including the Cybercrime Prevention Act of 2012, as well as the relevant international cyber sec and data protection regulations.
+
+All activities may be monitored, logged and used as evidence in legal proceedings.
+#################################################################################################################################
+@
+```
