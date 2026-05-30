@@ -1,0 +1,19 @@
+en
+conf t
+line console 0
+password console
+login
+exit
+line vty 0 4
+password telnet
+login
+exit
+enable secret class
+service password-encryption
+banner motd @
+#################################################################################################################################
+							                                    CYBERSECURITY WARNING
+Unauthorized access, tampering, interception, or misuse of this device, system, or network is strictly prohibited. Violators may be subject to criminal prosecution and civil liabilities under applicable Philippine laws, including the Cybercrime Prevention Act of 2012, as well as the relevant international cyber sec and data protection regulations.
+All activities may be monitored, logged and used as evidence in legal proceedings.
+#################################################################################################################################
+@
