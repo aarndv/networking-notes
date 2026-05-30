@@ -31,3 +31,8 @@ If changes made to the running config do not have the desired effect and the run
 ```nasl
 Router# reload
 ```
+
+If the undesired changes were saved to the startup-config:
+```nasl
+Router# erase startup-config
+```
