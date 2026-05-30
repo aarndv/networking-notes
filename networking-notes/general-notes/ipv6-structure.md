@@ -42,7 +42,6 @@ _Note: IPv6 lacks an explicit broadcast address type; it uses specialized link-l
 ## 5. Architectural Topology of a Global Unicast Address
 
 General Allocation Split
-| :--- | :--- | :--- |
 | Global Routing Prefix (n) | Subnet ID (m) | Interface ID (128-n-m) |
 | :--- | :--- | :--- |
 
