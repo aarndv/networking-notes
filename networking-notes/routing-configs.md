@@ -38,10 +38,10 @@ R1 is missing routes to R2's LAN and R3's LAN.
 
 ```nasl
 R1# configure terminal
-! Route to R2\'s LAN via next-hop R2 Se0/0/0
+! Route to R2s LAN via next-hop R2 Se0/0/0
 R1(config)# ip route 192.168.2.0 255.255.255.0 10.1.12.2
 
-! Route to R3\'s LAN via exit interface Se0/1/0 (useful when next-hop IP is unknown)
+! Route to R3s LAN via exit interface Se0/1/0 (useful when next-hop IP is unknown)
 R1(config)# ip route 192.168.3.0 255.255.255.0 serial 0/1/0
 R1(config)# exit
 ```
@@ -52,10 +52,10 @@ R2 is missing routes to R1's LAN and R3's LAN.
 
 ```nasl
 R2# configure terminal
-! Route to R1\'s LAN via next-hop R1 Se0/0/0
+! Route to R1s LAN via next-hop R1 Se0/0/0
 R2(config)# ip route 192.168.1.0 255.255.255.0 10.1.12.1
 
-! Route to R3\'s LAN via next-hop R3 Se0/0/1
+! Route to R3s LAN via next-hop R3 Se0/0/1
 R2(config)# ip route 192.168.3.0 255.255.255.0 10.1.23.3
 R2(config)# exit
 ```
