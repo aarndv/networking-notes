@@ -70,8 +70,3 @@ The Physical Layer defines the mechanical, electrical, functional, and procedura
 * **Media Formats:** Electrical voltages (copper wire), light pulses (fiber-optics), or radio frequency modulations (wireless).
 * **Hardware Elements:** RJ-45 connectors, Cat6 UTP cables, fiber optics, transceivers, hubs, repeaters.
 
----
-
-## 3. Operational Peer-to-Peer Communication
-
-During network communication, layers on the sending host communicate virtually with their corresponding **peer layers** on the receiving host. For instance, the transport layer headers attached by Host A are parsed exclusively by the transport layer software engine running on Host B. Intermediate transit infrastructure devices (like standard Layer 2 switches and routers) only process the data packet up to their respective layer boundaries before forwarding the frame along its next physical hop.
