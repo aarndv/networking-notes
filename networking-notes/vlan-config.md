@@ -20,7 +20,7 @@ VLANs solve this by decoupling logical network segmentation from physical infras
 * **Native VLAN**: A specific VLAN assigned to an 802.1Q trunk port where all untagged traffic is directed. Both ends of a trunk link must share the same Native VLAN configuration to avoid traffic leaks or security risks.
 * **SVI (Switched Virtual Interface)**: A logical Layer 3 interface configured inside a multilayer switch. By binding an IP address to an internal VLAN, the SVI acts as the default gateway for all physical hosts assigned to that specific broadcast domain.
 
-<img width="1024" height="559" alt="image" src="https://github.com/user-attachments/assets/0d2f652e-972f-466f-9409-ecc1ba904b70" />
+<img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/970bef4c-4014-4e4c-a67e-0538bd51d984" />
 
 ---
 
