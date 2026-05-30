@@ -46,9 +46,8 @@ General Allocation Split
 | :--- | :--- | :--- |
 
 Standard Enterprise /48 Allocation Block
-+------------------------------------+--------------------------+---------------------------------+
-|    Global Routing Prefix (/48)     |     Subnet ID (/16)      |       Interface ID (/64)        |
-+------------------------------------+--------------------------+---------------------------------+
+| Global Routing Prefix (/48) | Subnet ID (/16) | Interface ID (/64) |
+| :--- | :--- | :--- |
 
 ### The 3-1-4 Architecture Breakdown
 
