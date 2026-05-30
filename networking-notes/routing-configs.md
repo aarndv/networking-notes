@@ -102,7 +102,8 @@ R2# configure terminal
 R2(config)# router rip
 R2(config-router)# version 2
 R2(config-router)# no auto-summary
-R2(config-router)# network 10.0.0.0
+R2(config-router)# network 10.1.12.0
+R2(config-router)# network 10.1.23.0
 R2(config-router)# network 192.168.2.0
 R2(config-router)# passive-interface Loopback0
 R2(config-router)# exit
