@@ -113,8 +113,21 @@ SW(config-if)# exit
 
 Deploying a Layer 3 (Multilayer) Switch utilizes hardware ASIC chips for wire-speed inter-VLAN routing, eliminating the throughput bottlenecks caused by single-link Router-on-a-Stick attachments.
 
+### Prerequisites for Dual-Stack (IPv4/IPv6) Hardware Allocation
+Many classic Cisco multilayer switches do not allocate hardware memory for IPv6 routing by default. You must change the Switch Database Manager (SDM) template to allocate resource tables for both protocols and reload the device before configuring IPv6 routing elements.
+
+```nasl
+SW# configure terminal
+SW(config)# sdm prefer dual-ipv4-and-ipv6 default
+SW(config)# exit
+SW# reload
+```
+
+### Initializing Global Forwarding Engines
+
 ```nasl
 SW(config)# ip routing
+SW(config)# ipv6 unicast-routing
 ```
 
 _Note: Cisco multilayer switches function strictly as Layer 2 devices by default until global IP routing is explicitly turned on._
