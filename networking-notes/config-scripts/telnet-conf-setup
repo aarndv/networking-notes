@@ -1,0 +1,9 @@
+en
+conf t
+username admin privilege 15 secret LocalTelnetPass555
+line vty 0 4
+exec-timeout 10 0
+logging synchronous
+login local
+transport input telnet
+exit
