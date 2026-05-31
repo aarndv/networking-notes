@@ -30,7 +30,7 @@
 ---
 
 ### Network Discovery & Topology
-- `show cdp neighbors`: Lists directly connected Cisco devices, showing their local interface, remote interface, and device ID.
+- **`show cdp neighbors`**: Lists directly connected Cisco devices, showing their local interface, remote interface, and device ID.
 - `show cdp neighbors detail`: Provides deep details about neighbors, including their IP addresses, IOS version, and device capabilities.
 - `show lldp neighbors`: Performs the exact same function as CDP, but utilizes the vendor-neutral Link Layer Discovery Protocol.
 
