@@ -2,7 +2,7 @@ en
 conf t
 no ip domain-lookup
 security passwords min-length 10
-Router(config)# login block-for 180 attempts 3 within 120
+login block-for 180 attempts 3 within 120
 line console 0
 exec-timeout 5 0
 password networking
