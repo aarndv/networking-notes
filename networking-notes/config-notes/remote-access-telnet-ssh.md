@@ -6,6 +6,8 @@ This note covers the configuration, operation, and security implications of virt
 
 For remote access configurations, a management workstation establishes a virtual session across the network to an in-band IP address configured on a target device (e.g., an SVI on a switch or a physical interface on a router).
 
+<img width="1019" height="549" alt="image" src="https://github.com/user-attachments/assets/ecb3f944-69b3-459f-afea-3569f591e89a" />
+
 ## 2. Legacy Telnet Configuration & Vulnerabilities
 
 Telnet operates over TCP port 23. It is a legacy protocol that transmits all traffic—including administrative usernames and plaintext passwords—in cleartext. Anyone with a packet sniffer (like Wireshark) on the data path can intercept these credentials. It should only be used in isolated laboratory environments.
