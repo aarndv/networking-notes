@@ -102,9 +102,19 @@ R2# configure terminal
 R2(config)# router rip
 R2(config-router)# version 2
 R2(config-router)# no auto-summary
+
+! Inject the default static route into all outbound RIP updates automatically.
+! Used on the edge router that connects an internal enterprise network to the broader internet.
+Router(config-router)# default-information originate
+
+! Prevent routing updates from being broadcasted out host-facing interfaces
+Router(config-router)# passive-interface fastethernet 0/1
+
 R2(config-router)# network 10.1.12.0
 R2(config-router)# network 10.1.23.0
 R2(config-router)# network 192.168.2.0
+
+! Optional
 R2(config-router)# passive-interface Loopback0
 R2(config-router)# exit
 ```
