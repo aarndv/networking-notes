@@ -64,7 +64,7 @@ SW(config)# ip dhcp pool VLAN10_ENG
 SW(dhcp-config)# network 192.168.10.0 255.255.255.0
 SW(dhcp-config)# default-router 192.168.10.1
 SW(dhcp-config)# dns-server 8.8.8.8 8.8.4.4
-SW(dhcp-config)# domain-name engineering.local
+SW(dhcp-config)# domain-name engineering.local   ! OPTIONAL
 SW(dhcp-config)# exit
 
 ! Configure DHCP Pool for VLAN 20
@@ -72,7 +72,7 @@ SW(config)# ip dhcp pool VLAN20_MKT
 SW(dhcp-config)# network 192.168.20.0 255.255.255.0
 SW(dhcp-config)# default-router 192.168.20.1
 SW(dhcp-config)# dns-server 1.1.1.1
-SW(dhcp-config)# domain-name marketing.local
+SW(dhcp-config)# domain-name marketing.local    ! OPTIONAL
 SW(dhcp-config)# exit
 ```
 
