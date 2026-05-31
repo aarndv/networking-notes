@@ -21,7 +21,9 @@ networking-notes/
 │   └── vlan-config.md                # Access ports, 802.1Q trunking, SVIs, and native VLAN assignment
 ├── config-scripts/
 │   ├── adv-router-conf-pass          # Advanced administrative configuration and credential scripting templates
-│   └── basic-router-conf-pass        # Foundational device deployment and initialization scripts
+│   ├── basic-router-conf-pass        # Foundational device deployment and initialization scripts
+│   ├── ssh-conf-setup                # Secure Shell (SSHv2) server initialization and RSA key macro configuration
+│   └── telnet-conf-setup             # Legacy virtual terminal (VTY) remote access configuration template
 ├── general-notes/                    # Conceptual frameworks, architectural models, and theory notes
 ├── VLSM-class-notes.md               # Subnetting mechanics, variable-length subnet masks, and host math
 ├── misc-helpful-commands.md          # Troubleshooting toolkit (ping, traceroute, and interface database audits)
