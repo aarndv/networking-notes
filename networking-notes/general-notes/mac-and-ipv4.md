@@ -1,88 +1,93 @@
 # MAC and IPv4 Addressing Fundamentals
 
-## 1. Media Access Control (MAC) Addressing (Layer 2)
+## 1. MAC Addressing (Layer 2)
 
-A MAC address is a permanent physical address burned into a network interface card (NIC) during manufacturing. It operates at Data Link Layer (Layer 2) of the OSI model to ensure hop-to-hop data delivery across the same local segment.
+A MAC address identifies a network interface on a local Layer 2 network (for example, inside one switched LAN).
 
-### Hardware Address Properties
-- Bit Length: 48 bits, written as 12 hexadecimal digits (0−9, A−F).
-- Format Structure: Typically written as `MM:MM:MM:SS:SS:SS`, `MM-MM-MM-SS-SS-SS`, or `MMMM.MMMM.MMMM`.
-- The 24/24 Bit Split:
-  - OUI (Organizationally Unique Identifier): The initial 24 bits (first 6 hex digits) designate the hardware manufacturer. Managed and assigned by the IEEE.
-  - UAA (Universally Administered Address): The remaining 24 bits (last 6 hex digits) are a unique serial identifier assigned by the manufacturer.
+> Analogy: A MAC address is like an apartment number inside one building.
 
-### Frame Transmission Methods
-- **Unicast:** Sent from a single source host to a single specific destination device. The first hextet's least significant bit is set to 0.
-- **Multicast:** Sent to a selected group of subscription devices (e.g., routing updates). The first hextet's least significant bit is set to 1 (e.g., Ethernet addresses starting with 01:00:5E).
-- **Broadcast:** Sent to every node on the local Layer 2 broadcast domain. Set entirely to binary 1s, represented in hex as FF:FF:FF:FF:FF:FF.
+### MAC Properties
+- **Length:** 48 bits (12 hexadecimal digits).
+- **Common formats:** `MM:MM:MM:SS:SS:SS`, `MM-MM-MM-SS-SS-SS`, or `MMMM.MMMM.MMMM`.
+- **Structure:**
+  - **OUI (first 24 bits):** Vendor identifier assigned by IEEE.
+  - **Device-specific part (last 24 bits):** Assigned by the vendor.
 
-2. Internet Protocol Version 4 (IPv4) Addressing (Layer 3)
+### Ethernet Destination Types
+- **Unicast:** One sender to one destination.
+- **Multicast:** One sender to selected group members.
+- **Broadcast:** One sender to all hosts in the local broadcast domain (`FF:FF:FF:FF:FF:FF`).
 
-An IPv4 address is a logical identifier configured on an interface to facilitate end-to-end network routing across different geographic boundaries. It operates at Network Layer (Layer 3).
+---
 
-### Address Architecture
-- Bit Length: 32 bits, written in a human-readable dotted-decimal format consisting of four 8-bit sections called octets separated by periods.
-- Octet Values: Each octet ranges from 0 to 255 in decimal (00000000 to 11111112 in binary).
+## 2. IPv4 Addressing (Layer 3)
 
-### The Two-Part Hierarchy
+An IPv4 address is a logical Layer 3 identifier used for routing between networks.
 
-Every IPv4 address is split into two sections determined by its accompanying subnet mask:
-- Network Portion: Identifies the specific logical network segment the host belongs to. Routers evaluate only this portion when forwarding packets.
-- Host Portion: Identifies the specific physical device interface on that local network segment.
+> Analogy: If MAC is the apartment number, IPv4 is the street/city address used by delivery routes.
 
-## 3. Subnet Masks and Prefix Logic
+### IPv4 Properties
+- **Length:** 32 bits.
+- **Format:** Dotted decimal with four octets.
+- **Octet range:** 0 to 255 (binary `00000000` to `11111111`).
 
-A subnet mask is a 32-bit sequence of consecutive binary 1s followed by consecutive binary 0s. It tells network hardware where the network portion ends and the host portion begins.
+### Network and Host Parts
+The subnet mask (or prefix) splits the address into:
+- **Network portion** (used by routers for forwarding decisions)
+- **Host portion** (identifies a specific interface in that subnet)
 
-### Evaluating Data via ANDing
+---
 
-Devices perform a bitwise logical `AND` operation between their local IP address and their subnet mask to derive their Network ID:
-- 1 AND 1=1
-- 1 AND 0=0
-- 0 AND 0=0
+## 3. Subnet Masks and CIDR
 
-### Slash/CIDR Notation Comparison
+A subnet mask is a 32-bit value with contiguous 1s followed by contiguous 0s.
 
-Instead of writing full decimal masks, networks use Classless Inter-Domain Routing (CIDR) notation to count the total number of masking binary 1s:
+Devices use bitwise AND (`IP AND mask`) to derive the network ID.
 
-| Subnet Mask (Decimal) | Subnet Mask (Binary Representation) | CIDR Prefix |
+| Mask (Decimal) | Mask (Binary) | Prefix |
 | :--- | :--- | :--- |
-| `255.0.0.0` |	`11111111.00000000.00000000.00000000` |	/8 |
-| `255.255.0.0` |	`11111111.11111111.00000000.00000000` |	/16 |
-| `255.255.255.0`	| `11111111.11111111.11111111.00000000` |	/24 | 
-| `255.255.255.192`	| `11111111.11111111.11111111.11000000` |	/26 | 
+| `255.0.0.0` | `11111111.00000000.00000000.00000000` | `/8` |
+| `255.255.0.0` | `11111111.11111111.00000000.00000000` | `/16` |
+| `255.255.255.0` | `11111111.11111111.11111111.00000000` | `/24` |
+| `255.255.255.192` | `11111111.11111111.11111111.11000000` | `/26` |
 
-## 4. Special Address Roles in a Subnet
+---
 
-Within any given subnet block, two addresses are completely unusable for host assignment:
-- Network Address: The very first address in the block, where all host bits are set to binary 0. It defines the entire subnet boundary line.
-- Broadcast Address: The very last address in the block, where all host bits are set to binary 1. Packets sent here are replicated to every active device in that subnet.
-- Host Range: The usable IP addresses falling between the Network Address and Broadcast Address.
-- Formula for Usable Hosts: To calculate the maximum usable host addresses in any subnet where h represents the number of binary 0s (host bits):
-$$2h−2$$
+## 4. Special Addresses Inside a Subnet
 
-## 5. Legacy Classful IP Architecture
+- **Network address:** First address in subnet (all host bits = 0).
+- **Broadcast address:** Last address in subnet (all host bits = 1, IPv4 only).
+- **Usable hosts:** Addresses between network and broadcast.
 
-Before classless networking was introduced, IPv4 was split into five rigid, unchangeable categories determined by the value of the very first octet:
-- Class A (`1.0.0.0` to `126.255.255.255`): Designed for massive organizations. Uses a default /8 mask, providing up to 16,777,214 hosts per network.
-- Class B (`128.0.0.0` to `191.255.255.255`): Designed for medium-to-large environments. Uses a default /16 mask, providing up to 65,534 hosts per network.
-- Class C (`192.0.0.0` to `223.255.255.255`): Designed for small networks. Uses a default /24 mask, providing up to 254 hosts per network.
-- Class D (`224.0.0.0` to `239.255.255.255`): Reserved entirely for Multicast application streams. No host ranges are allocated.
-- Class E (`240.0.0.0` to `255.255.255.255`): Reserved for military, experimental research, and future deployment testing.
+Usable host formula:
 
-### Key Exceptions
-- 127.0.0.0/8 Block: Completely omitted from public Class A use. Reserved for local host software loopback testing (e.g., 127.0.0.1).
-- 0.0.0.0: Represents an unspecified source or the system's default local route choice.
+$$2^h - 2$$
 
-## 6. Public vs. Private IPv4 Spaces (RFC 1918)
+Where `h` is the number of host bits.
 
-Public IPv4 addresses must be registered globally and are unique across the global Internet routing table. To conserve the limited pool of 32-bit addresses, RFC 1918 established distinct private ranges that are non-routable on the public web. They can be reused across different internal corporate enterprises.
+---
 
-### RFC 1918 Private Ranges
-- Class A Range: `10.0.0.0` to `10.255.255.255` (`10.0.0.0/8`)
-- Class B Range: `172.16.0.0` to `172.31.255.255` (`172.16.0.0/12`)
-- Class C Range: `192.168.0.0` to `192.168.255.255` (`192.168.0.0/16`)
+## 5. Classful Ranges (Historical Context)
 
-### Link-Local Automatic Allocation (APIPA)
+Classful addressing is mostly historical, but still useful for exam context:
+- **Class A:** `1.0.0.0` to `126.255.255.255` (default `/8`)
+- **Class B:** `128.0.0.0` to `191.255.255.255` (default `/16`)
+- **Class C:** `192.0.0.0` to `223.255.255.255` (default `/24`)
+- **Class D:** `224.0.0.0` to `239.255.255.255` (multicast)
+- **Class E:** `240.0.0.0` to `255.255.255.255` (reserved/experimental)
 
-If a client machine is configured for dynamic DHCP retrieval but cannot reach a functional DHCP server on its local network segment, the operating system drops back to an unrouted Automatic Private IP Addressing (APIPA) address within the range 169.254.0.0 to 169.254.255.255 (169.254.0.0/16).MAC and IPv4 Addressing Fundamentals
+Notes:
+- `127.0.0.0/8` is loopback.
+- `0.0.0.0` can represent an unspecified address or default route context (`0.0.0.0/0`).
+
+---
+
+## 6. Public vs Private IPv4 (RFC 1918)
+
+Private ranges are not routed on the public Internet:
+- `10.0.0.0/8`
+- `172.16.0.0/12`
+- `192.168.0.0/16`
+
+### APIPA / Link-Local IPv4
+If DHCP fails on many operating systems, clients may self-assign from `169.254.0.0/16`.
