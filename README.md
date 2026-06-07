@@ -3,8 +3,8 @@
 This repository contains practical Cisco IOS notes, quick command references, and networking fundamentals.
 
 These notes are written for learners, not just experts. If you are new, start with:
-- `/tmp/workspace/aarndv/networking-notes/networking-notes/general-notes/how-to-study-these-notes.md`
-- `/tmp/workspace/aarndv/networking-notes/networking-notes/general-notes/osi-layers.md`
+- `networking-notes/general-notes/how-to-study-these-notes.md`
+- `networking-notes/general-notes/osi-layers.md`
 
 ---
 
