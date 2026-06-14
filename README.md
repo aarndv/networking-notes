@@ -1,42 +1,53 @@
 # Computer Networking Reference Notes
 
-A structured compilation of technical reference guides, Cisco IOS configuration scripts, and foundational network engineering principles. This repository serves as a core deployment playbook and academic study resource for Layer 2 switching, Layer 3 routing, and essential infrastructure services.
+This repository contains practical Cisco IOS notes, quick command references, and networking fundamentals.
+
+These notes are written for learners, not just experts. If you are new, start with:
+- `networking-notes/general-notes/how-to-study-these-notes.md`
+- `networking-notes/general-notes/osi-layers.md`
 
 ---
 
-## ── Repository Architecture ──
-
-The documentation is systematically structured into functional directories based on the operational scope of the notes:
+## Repository Layout
 
 ```text
 networking-notes/
 ├── config-notes/
-│   ├── basic-device-config.md        # Initial device parameters, security banners, and line configurations
-│   ├── dhcp-layer3.md                # Centralized DHCP pools, address exclusions, and relay agents
-│   ├── interface-config.md           # Speed, duplex, description, and status management configurations
-│   ├── pass-config.md                # Password encryption schemes and console/enable protection layers
-│   ├── remote-access-telnet-ssh.md   # Plaintext Telnet vs. SSHv2 RSA key generation and VTY hardening
-│   ├── routing-configs.md            # Static routes, next-hop validation, and dynamic RIPv2 propagation
-│   ├── save-config.md                # Running-config vs. startup-config state management operations
-│   └── vlan-config.md                # Access ports, 802.1Q trunking, SVIs, and native VLAN assignment
+│   ├── basic-device-config.md
+│   ├── dhcp-layer3.md
+│   ├── interface-config.md
+│   ├── pass-config.md
+│   ├── remote-access-telnet-ssh.md
+│   ├── routing-configs.md
+│   ├── save-config.md
+│   └── vlan-config.md
 ├── config-scripts/
-│   ├── adv-router-conf-pass          # Advanced administrative configuration and credential scripting templates
-│   ├── basic-router-conf-pass        # Foundational device deployment and initialization scripts
-│   ├── ssh-conf-setup                # Secure Shell (SSHv2) server initialization and RSA key macro configuration
-│   └── telnet-conf-setup             # Legacy virtual terminal (VTY) remote access configuration template
-├── general-notes/                    # Conceptual frameworks, architectural models, and theory notes
-├── VLSM-class-notes.md               # Subnetting mechanics, variable-length subnet masks, and host math
-├── misc-helpful-commands.md          # Troubleshooting toolkit (ping, traceroute, and interface database audits)
-└── README.md                         # Repository deployment framework and administrative guide
+│   ├── adv-router-conf-pass
+│   ├── basic-router-conf-pass
+│   ├── ssh-conf-setup
+│   └── telnet-conf-setup
+├── general-notes/
+│   ├── how-to-study-these-notes.md
+│   ├── ipv6-structure.md
+│   ├── mac-and-ipv4.md
+│   └── osi-layers.md
+├── VLSM-class-notes.md
+└── misc-helpful-commands.md
 ```
 
-## ── Primary Operational Verification Cheat Sheet ──
+---
 
-Execute these validation commands from privileged EXEC mode (#) to quickly audit network status during troubleshooting:
-- VLAN Database Verification: `show vlan brief`
-- Inter-Switch Trunk Operational Analysis: `show interfaces trunk`
-- Layer 2 Hardware Address Tracking: `show mac address-table`
-- Layer 3 Interface Verification Summary: `show ip interface brief` / `show ipv6 interface brief`
-- Active Routing Matrix Evaluation: `show ip route / show ipv6 route`
-- Infrastructure Discovery Protocol Matrix: `show cdp neighbors` / `show lldp neighbors`
-- Active Security and Connection Tracking: `show users` / `show ip ssh`
+## Quick Verification Commands
+
+Run from privileged EXEC mode (`#`) unless noted otherwise:
+- `show vlan brief`
+- `show interfaces trunk`
+- `show mac address-table`
+- `show ip interface brief`
+- `show ipv6 interface brief`
+- `show ip route`
+- `show ipv6 route`
+- `show cdp neighbors`
+- `show lldp neighbors` (if LLDP is enabled on the platform)
+- `show users`
+- `show ip ssh`

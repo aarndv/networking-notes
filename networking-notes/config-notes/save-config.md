@@ -1,38 +1,40 @@
 # Save Configuration
 
-### Terms
-- **startup-config** - This is the saved configuration file that is stored in NVRAM. It contains all the commands that will be
-used by the device upon startup or reboot. Flash does not lose its contents when the device is powered off.
-- **running-config** - This is stored in Random Access Memory (RAM). It reflects the current configuration. Modifying a
-running configuration affects the operation of a Cisco device immediately. RAM is volatile memory. It loses all of its
-content when the device is powered off or restarted.
+## Terms
+- **running-config**: Active configuration in RAM (volatile).
+- **startup-config**: Saved configuration used at boot, stored in NVRAM (non-volatile).
 
 ---
 
-### To save your changes
+## Save current changes
 ```nasl
 Router# copy running-config startup-config
-! or
+! shorthand on many platforms
+Router# write memory
+! shorthand
 Router# wr
 ```
 
-### To check your device's current configuration
+## View current active config
 ```nasl
 Router# show running-config
 ```
 
 ---
 
-If changes made to the running config do not have the desired effect and the running-config has not yet been saved, you can restore the device to its previous configuration. To do this you can:
+## Rollback-related options
 
-- Remove the changed commands individually.
-- Reload the device using the `reload` command in privilege EXEC mode. Note: This will cause the device to briefly go offline, leading to network downtime.
+If you changed running-config and have **not** saved yet:
+- Remove the commands manually, or
+- Reload the device to discard unsaved changes.
 
 ```nasl
 Router# reload
 ```
 
-If the undesired changes were saved to the startup-config:
+If unwanted changes were already saved to startup-config:
 ```nasl
 Router# erase startup-config
 ```
+
+Then reload and reapply the intended configuration.

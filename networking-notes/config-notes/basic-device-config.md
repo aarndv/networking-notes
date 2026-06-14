@@ -1,52 +1,53 @@
-# Basic NETWORKING notes
+# Basic Networking Device Access Notes
+
+## CLI Modes
 
 ### User EXEC mode
+Default mode after login. Prompt usually ends in `>`.
 
-You will be immediately on the User EXEC mode
-
-### Privelege EXEC mode
-
-To enter, when you're in the user EXEC mode
+### Privileged EXEC mode
+Enter from User EXEC:
 ```nasl
-Router>enable
-! or you could also do
-Router>en
+Router> enable
+! shorthand
+Router> en
 ```
 
-### To enter global config mode, when you're in the privilege EXEC mode
+### Global configuration mode
+Enter from Privileged EXEC:
 ```nasl
 Router# configure terminal
-! or you could also do
+! shorthand
 Router# conf t
 ```
 
-### To exit to privilege EXEC mode from global config mode
+### Return to Privileged EXEC
 ```nasl
 Router(config)# end
 Router#
 ```
 
-### To exit from a subconfiguration mode back to global config mode
+### Exit one level (submode to global config)
 ```nasl
 Router(config-if)# exit
 Router(config)#
 ```
 
-### Configuring a device name
+## Set Hostname
 ```nasl
 Router(config)# hostname PHRouter
-PHRouter(config)# 
+PHRouter(config)#
 ```
 
-### To add a banner when opening the device
+## MOTD Banner
 ```nasl
 PHRouter(config)# banner motd @
 #################################################################################################################################
-							CYBERSECURITY WARNING
+                            CYBERSECURITY WARNING
 
-Unauthorized access, tampering, interception, or misuse of this device, system, or network is strictly prohibited. Violators may be subject to criminal prosecution and civil liabilities under applicable Philippine laws, including the Cybercrime Prevention Act of 2012, as well as the relevant international cyber sec and data protection regulations.
+Unauthorized access, tampering, interception, or misuse of this device, system, or network is strictly prohibited. Violators may be subject to criminal prosecution and civil liabilities under applicable Philippine laws, including the Cybercrime Prevention Act of 2012, as well as relevant international cybersecurity and data protection regulations.
 
-All activities may be monitored, logged and used as evidence in legal proceedings.
+All activities may be monitored, logged, and used as evidence in legal proceedings.
 #################################################################################################################################
 @
 ```
